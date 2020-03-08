@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="时光的Code">
 <meta property="og:description" content="在SPPNet出来之前，由于全连接层的限制，绝大部分CNN网络都需要固定的输入。在固定尺寸的情况下，一次加载一个batch的图像不会有问题，但是在SPPNet等对输入尺寸没有限制的模型训练过程中，一个batch内如果图片尺寸不一致，DataLoader将会报错。这种情况下，可以将batchsize设置位1，或者通过自定义collate_fn函数来改变数据加载的行为，本文将讨论第二种方法。 相关环境">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-07T08:30:16.559Z">
+<meta property="og:updated_time" content="2020-03-07T08:54:38.909Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -357,8 +357,8 @@
       
         <p>在SPPNet出来之前，由于全连接层的限制，绝大部分CNN网络都需要固定的输入。在固定尺寸的情况下，一次加载一个batch的图像不会有问题，但是在SPPNet等对输入尺寸没有限制的模型训练过程中，一个batch内如果图片尺寸不一致，DataLoader将会报错。这种情况下，可以将batchsize设置位1，或者通过自定义collate_fn函数来改变数据加载的行为，本文将讨论第二种方法。</p>
 <h3 id="相关环境"><a href="#相关环境" class="headerlink" title="相关环境"></a>相关环境</h3><ul>
-<li>Python_3.7.4</li>
-<li>Pytorch_1.3.0</li>
+<li>python_3.7</li>
+<li>pytorch_1.2.0</li>
 </ul>
 <h3 id="关于collate-fn函数"><a href="#关于collate-fn函数" class="headerlink" title="关于collate_fn函数"></a>关于collate_fn函数</h3><p>首先，collate_fn是torch.utils.data.DataLoader函数的一个参数（回调函数）。该函数定义了样本的加载行为，指明怎么堆叠一个batch的数据。在官方代码中该函数的释义如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># collate_fn (callable, optional): merges a list of samples to form a</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#             mini-batch of Tensor(s).  Used when using batched loading from a</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#             map-style dataset.</span></span></pre></td></tr></table></figure>
